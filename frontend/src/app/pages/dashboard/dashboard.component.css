@@ -1,0 +1,53 @@
+.title {
+  text-align: center;
+}
+.all-block {
+  width: 40%;
+  min-height: 200px;
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  /* align-items: center; */
+  /* border: black solid 2px; */
+  /* font-size: 20px;
+  padding: 10px 15px; */
+  /* font-size: 20px;
+  padding: 10px 15px; */
+}
+.product-choice {
+  width: 100%;
+  height: 100px;
+  border: black solid 1px;
+}
+select {
+  color: black;
+  background-color: #bfa9a5;
+  font-size: 1.5rem;
+  padding: 1em 1.5em;
+  margin: 30px 0 15px 25px;
+}
+.text {
+  width: 100%;
+  height: auto;
+
+  border: black solid 1px;
+}
+.text > div {
+  margin: 5px 0px 5px 30px;
+}
+#product-name {
+  margin: 40px 0px 0px 30px;
+}
+div input {
+  height: 20px;
+  font-size: 0.8em;
+  margin-bottom: 20px;
+}
+input ~ button {
+  height: 25px;
+  background-color: rgb(49, 38, 214);
+  color: white;
+  border-radius: 5px;
+  font-size: 0.9em;
+}

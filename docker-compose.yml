@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  frontend:
+    build: 
+    networks:
+      - network-frontend
+    port:
+      8083:80
+  backend:
+    build:
+      network: networkName

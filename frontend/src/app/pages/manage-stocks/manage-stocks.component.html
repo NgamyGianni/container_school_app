@@ -1,0 +1,41 @@
+<div class="container">
+<div class="row">
+    <h1 class="text-center">{{title}}</h1>
+</div>
+    <div class="row align-items-center">
+            <div class="col text-center">
+                <div *ngFor="let produitList of categoryProd">
+                    <h2>{{ getCategoryNameById(produitList) }}</h2>
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Prix</th>
+                                    <th scope="col">Promotion</th>
+                                    <th scope="col">Quantité</th>
+                                    <th scope="col">Vendu</th>
+                                    <th scope="col">Commentaire</th>
+                                    <th scope="col">Ajout Stock</th>
+                                    <th scope="col">Modification Promo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr  *ngFor="let produit of produitList">
+                                        <td>{{produit.name}}</td>
+                                        <td>{{produit.price}}</td>
+                                        <td>{{produit.discount}}</td>
+                                        <td>{{produit.quantity_stock}}</td>
+                                        <td>{{produit.quantity_sold}}</td>
+                                        <td>{{produit.comments}}</td>
+                                        <td><input type="number" min=-{{produit.quantity_stock}} (change)="addToUpdateQuantitylist($event,produit)" placeholder="Quantité"></td>
+                                        <td><input type="number" name="nDiscount" min=0 max=100 (change)="addToUpdateDiscountlist($event,produit)" placeholder="%"></td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                </div>
+        </div> 
+        <div class="col text-center">
+            <button type="button" (click)="this.updateProductsQuantityDiscount()" class="btn btn-primary btn-lg">Modifier Stock</button>
+        </div>
+    </div> 
+</div> 

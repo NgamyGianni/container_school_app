@@ -1,0 +1,22 @@
+<h1> Bateau Thibault</h1>
+<div class="group-btns">
+    <div >
+        <app-button-details-home (getDetailsProduct)="onGetDetailsProduct($event)"></app-button-details-home>
+    </div>
+    <div>
+        <app-button-manage-home></app-button-manage-home>
+    </div>
+</div>
+<div class="all-products" *ngIf="!onDisplayList" >
+    <div class="descrip-product" *ngFor="let product of productsList">
+        <h4>Nom : {{product.name}}</h4>
+        <div>Unité : {{product.unit}}</div>
+        <div>Prix de vente : {{product.price_on_sale}} €</div>
+        <div>Prix réel: {{product.price}} €</div>
+        <div>Remise de prix : {{product.discount}} %</div>
+        <div>Produit vendu : {{product.quantity_sold}}</div>
+        <div>Stock Disponible : {{product.quantity_stock}}</div>
+        <div>Propriétaire: {{product.owner}}</div>
+        <div>Commentaire: {{product.comments}}</div>
+    </div>
+</div>
