@@ -5,4 +5,3 @@ RUN npm install &&\
 npm run build
 FROM nginx:alpine
 COPY --from=builder /usr/src/app/dist/backoffice /usr/share/nginx/html
-EXPOSE 70
