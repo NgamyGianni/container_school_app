@@ -1,0 +1,24 @@
+h1 {
+  margin-top: 50px;
+  text-align: center;
+}
+.group-btns {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.all-products {
+  width: 90%;
+  min-height: 400px;
+  margin: 40px 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 270px));
+  grid-template-rows: repeat(auto-fill, minmax(100px, 240px));
+}
+.descrip-product {
+  padding: 2px 0px 2px 10px;
+  background-color: aqua;
+  border: black dashed 2px;
+}

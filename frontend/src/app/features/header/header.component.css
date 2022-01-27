@@ -1,0 +1,26 @@
+.header-links {
+  flex: 1;
+  height: 70px;
+  background-color: black;
+  margin: -8px -8px 50px -8px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+.header-links div {
+  /* margin: 15px 10px 0 15px; */
+}
+/* .black */
+a {
+  text-decoration: none;
+  width: 100px;
+  height: 100%;
+  display: block;
+  /* background-color: aqua; */
+  text-align: center;
+  /* padding: 20px 15px 0 15px; */
+}
+p {
+  color: white;
+  padding-top: 5px;
+}

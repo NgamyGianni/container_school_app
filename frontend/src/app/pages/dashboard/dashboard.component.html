@@ -1,0 +1,36 @@
+<h1 class="title">Dashboard</h1>
+<div class="all-block">
+    
+    <div class="text" [ngStyle]="currentStyles">
+        <div id="product-name"></div>
+        <div>Revenu : {{revenue}}</div>
+        <div>Dépense : {{depense}}</div>
+        <div>Montant à prevoir pour les impôts : {{montantImpot}}</div>
+        <div [ngStyle]="currentStyles">Résultat après impôt : {{netIncome}}</div>
+         <div>
+            <div>
+                <input type="text" id="nYear" name="nYear" 
+                        min=2000 minlength="4" maxlength="4"
+                        [(ngModel)]="year">
+                <button  (click)="this.calculateRevenueByYear(); this.calculateNetIncome()">
+                        Calculer le revenu</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="text">
+        <div id="product-name"></div>
+        <div>Revenu : {{revenueCategories[category]}}</div>
+         <div>
+            <div>
+                <input type="text" id="nCategory" name="nCategory" 
+                        min=1 minlength="4" maxlength="4"
+                        [(ngModel)]="category">
+                <button  (click)="this.calculateRevenueCategories()">
+                        Calculer le revenu par catégorie</button>
+            </div>
+        </div>
+    </div>
+
+</div>

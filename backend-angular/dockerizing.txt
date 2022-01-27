@@ -1,0 +1,86 @@
+Première de pour docker le backend
+    1   Approche lie (Bind)
+        Cette approchse consiste à lier le container avec dossier qui contient la 
+        base de données. Il faut donc la commande docker-compose
+        "docker-compose up -d --build" (modification du Dockerfile et/ou docker-compose.yml) ou
+        "docker-compose up -d" (sans modification ni Dockerfile ni docker-compose.yml)
+        //docker-compose.yml
+        version: "3.8"
+        services:
+          backendapp:
+          build: ./backend-angular
+          networks:
+            - appnetwork
+          volumes:
+            - type: bind
+            source: ./backend-angular/dbobackend/mydatabase
+            target: /usr/src/mydatabase
+          ports:
+            - 8080:80
+        
+        networks:
+          appnetwork:
+            driver: bridge
+        
+        //Dockerfile backend
+        FROM python:3
+        WORKDIR /usr/src/app
+        COPY requirements.txt ./
+        RUN pip install --no-cache-dir -r requirements.txt 
+        COPY ./dbobackend/src .
+        RUN chmod 775 /script/*
+        ENTRYPOINT ["/script/entrypoint.sh","--"]
+        CMD ["python","manage.py","runserver", "0.0.0.0:80"] 
+    
+    2   Approche du volume
+        Cette approche consiste à créer un volume via la commande 
+        "docker volume create mydatabase" puis à la lancer docker-compose 
+        "docker-compose up -d --build" (modification du Dockerfile et/ou docker-compose.yml) ou
+        "docker-compose up -d" (sans modification ni Dockerfile ni docker-compose.yml)
+        //docker-compose.yml
+        version: "3.8"
+        services:
+          backendapp:
+          build: ./backend-angular
+          networks:
+            - appnetwork
+          volumes:
+            - mydatabase:/usr/src/mydatabase
+          ports:
+            - 8080:80
+        
+        networks:
+          appnetwork:
+            driver: bridge
+        volumes:
+          mydatabase:
+            external: true
+        
+        //Dockerfile backend
+        FROM python:3
+        WORKDIR /usr/src/app
+        COPY requirements.txt ./
+        RUN pip install --no-cache-dir -r requirements.txt 
+        COPY ./entrypoint.sh /script/
+        COPY ./dbobackend/src .
+        RUN chmod 775 /script/*
+        ENTRYPOINT ["/script/entrypoint.sh","--"]
+        CMD ["python","manage.py","runserver", "0.0.0.0:80"] 
+
+    3   Approche spécial pour mon mac (création volume)
+        -   On crée un volume "mydatabase" via docker volume create.
+        -   on se met dans le répetoire qui contient mydatabse 
+            "backend/dbobackend/mydatabase". Ensuite, je monte un conteneur 
+            avec volume et une méthode bind (`pwd` indique le répetoire courant):
+            "docker container run -ti -v `pwd`:/data -v mydatabase:/data2 debian /bin/bash"
+            "cp /data/* /data2/"
+            "exit"
+        -   On utilise le même docker-compose.yml 
+        -   //Dockerfile
+            FROM python:3
+            WORKDIR /usr/src/app
+            COPY requirements.txt ./
+            RUN pip install --no-cache-dir -r requirements.txt 
+            COPY ./dbobackend/src .
+            CMD ["python","manage.py","runserver", "0.0.0.0:80"] 
+        -   Enfin, on lance le "docker-compose up -d --build"

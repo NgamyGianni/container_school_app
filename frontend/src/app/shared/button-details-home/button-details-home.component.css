@@ -1,0 +1,25 @@
+.display-btn {
+  width: 300px;
+  height: 170px;
+  /*padding: 5px 15px;*/
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  border: black solid 1px;
+}
+.block {
+  width: 100%;
+  height: 50px;
+  /* background-color: aqua; */
+  border-bottom: black solid 1px;
+}
+.spacing {
+  padding: 2px 30px;
+}
+.display-btn > button {
+  width: 100px;
+  height: 40px;
+  background-color: slategray;
+  border-radius: 10px;
+  margin: 2px 30px;
+}

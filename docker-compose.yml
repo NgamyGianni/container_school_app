@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  frontendapp:
+    build: ./frontend
+    networks:
+      - appnetwork
+    ports:
+      - 8080:80
+  backendapp:
+    build: ./backend-angular
+    networks:
+      - appnetwork
+    volumes:
+      - mydatabase:/usr/src/mydatabase
+    ports:
+        - 8000:80    
+networks:
+  appnetwork:
+    driver: bridge
+volumes:
+  mydatabase:
+    external: true
