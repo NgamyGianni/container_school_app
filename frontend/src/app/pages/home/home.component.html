@@ -7,7 +7,7 @@
         <app-button-manage-home></app-button-manage-home>
     </div>
 </div>
-<div class="all-products" *ngIf="!onDisplayList" >
+<div class="all-products" *ngIf="onDisplayList" >
     <div class="descrip-product" *ngFor="let product of productsList">
         <h4>Nom : {{product.name}}</h4>
         <div>Unité : {{product.unit}}</div>

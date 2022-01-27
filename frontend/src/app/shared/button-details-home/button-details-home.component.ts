@@ -12,12 +12,14 @@ export class ButtonDetailsHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayList=false
+    console.log('initalization displayList',this.displayList)
+    this.getDetailsProduct.emit(this.displayList)
   }
   onGetDetailsProducts(){
       console.log("I clicked get details products")
      this.displayList=!this.displayList
      this.getDetailsProduct.emit(this.displayList)
-    
+    console.log("Send home to show/not list products",this.displayList)
   }
   test(){
     console.log("test");
