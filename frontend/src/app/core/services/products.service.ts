@@ -10,7 +10,8 @@ import { Observable } from 'rxjs';
 export class ProductsService {
   productCategory: { [id:number]: string } = {0:"Poissons", 1:"Fruits de Mer", 2:"Crustaces"};
   //url = "../../../assets/data/products.json";
-  url = 'http://127.0.0.1:8000/';
+  //url = 'http://127.0.0.1:8000/';
+  url = 'http://localhost:8080/';
   constructor(private http: HttpClient) { 
 
   }
