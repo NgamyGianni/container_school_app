@@ -22,7 +22,7 @@ Afin de créer les 2 images, nous avons utilisé ces 2 Dockerfiles :
   ENTRYPOINT ["/script/entrypoint.sh","--"]  
   CMD ["python","manage.py","runserver", "0.0.0.0:80"]   
   
-  ### entreypoint.sh
+  ### entreypoint.sh du backEnd
   #!/bin/bash
   
   while [[ $# -gt 0 ]]; do
