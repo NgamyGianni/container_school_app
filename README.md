@@ -22,9 +22,8 @@ Afin de créer les 2 images, nous avons utilisé ces 2 Dockerfiles :
   ENTRYPOINT ["/script/entrypoint.sh","--"]  
   CMD ["python","manage.py","runserver", "0.0.0.0:80"]   
 
-### Entrypoint dy backEnd
+### Entrypoint du backEnd
   #!/bin/bash
-
   while [[ $# -gt 0 ]]; do
     case "$1" in
       --)
@@ -47,7 +46,6 @@ Afin de créer les 2 images, nous avons utilisé ces 2 Dockerfiles :
     python manage.py migrate 
     python manage.py initializedb
   fi
-
   echo -e "### Démarrage du conteneur ###"
   exec "${launch[@]}"
 
