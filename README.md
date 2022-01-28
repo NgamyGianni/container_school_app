@@ -24,7 +24,6 @@ Afin de créer les 2 images, nous avons utilisé ces 2 Dockerfiles :
   
   ### entreypoint.sh du backEnd
   #!/bin/bash
-  
   while [[ $# -gt 0 ]]; do
     case "$1" in
       --)
@@ -38,20 +37,15 @@ Afin de créer les 2 images, nous avons utilisé ces 2 Dockerfiles :
           ;;
     esac
   done
-  
   cd /usr/src/app
-  
   echo -e "### Préparation du conteneur ###"
-  
   sqlite=/usr/src/mydatabase/db.sqlite3
-  
   if [ ! -f $sqlite ]; then 
     echo "create de la database"
     python manage.py makemigrations 
     python manage.py migrate 
     python manage.py initializedb
   fi
-
   echo -e "### Démarrage du conteneur ###"
   exec "${launch[@]}"
 
